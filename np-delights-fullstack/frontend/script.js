@@ -1,4 +1,4 @@
-const API_URL = "http://localhost:5001/api";
+const API_URL = "https://np-delights.onrender.com/api";
 let products = [];
 let cart = [];
 let token = localStorage.getItem("np_token") || "";
