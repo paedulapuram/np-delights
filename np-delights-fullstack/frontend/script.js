@@ -1,7 +1,27 @@
 const API_URL = "https://np-delights.onrender.com/api";
+
 let products = [];
 let cart = [];
 let token = localStorage.getItem("np_token") || "";
+
+const productImagesByName = {
+  "dark chocolate": "assets/images/dark-chocolate.svg",
+  "milk chocolate": "assets/images/milk-chocolate.svg",
+  "white chocolate": "assets/images/white-chocolate.svg",
+  "hazelnut chocolate": "assets/images/hazelnut-chocolate.svg",
+  "caramel chocolate": "assets/images/caramel-chocolate.svg",
+  "assorted chocolate box": "assets/images/gift-box.svg",
+  "almond crunch chocolate": "assets/images/almond-crunch.svg",
+  "premium dark truffles": "assets/images/truffles.svg"
+};
+
+const fallbackImages = {
+  "dark": "assets/images/dark-chocolate.svg",
+  "milk": "assets/images/milk-chocolate.svg",
+  "white": "assets/images/white-chocolate.svg",
+  "nuts": "assets/images/hazelnut-chocolate.svg",
+  "gift": "assets/images/gift-box.svg"
+};
 
 const productGrid = document.getElementById("productGrid");
 const searchInput = document.getElementById("searchInput");
@@ -10,14 +30,23 @@ const cartItems = document.getElementById("cartItems");
 const cartCount = document.getElementById("cartCount");
 const totalPrice = document.getElementById("totalPrice");
 
+function getProductImage(product) {
+  const nameKey = product.name.toLowerCase();
+  return productImagesByName[nameKey] || fallbackImages[product.category] || "assets/images/dark-chocolate.svg";
+}
+
 function authHeaders() {
   return token ? { "Authorization": `Bearer ${token}` } : {};
 }
 
 async function loadProducts() {
-  const res = await fetch(`${API_URL}/products`);
-  products = await res.json();
-  filterProducts();
+  try {
+    const res = await fetch(`${API_URL}/products`);
+    products = await res.json();
+    filterProducts();
+  } catch (error) {
+    productGrid.innerHTML = "<p class='error'>Unable to load products. Please check backend connection.</p>";
+  }
 }
 
 function displayProducts(list) {
@@ -31,7 +60,7 @@ function displayProducts(list) {
     const card = document.createElement("div");
     card.className = "card";
     card.innerHTML = `
-      <div class="card-img">${product.image || "🍫"}</div>
+      <img class="product-img" src="${getProductImage(product)}" alt="${product.name}">
       <span class="category-pill">${product.category}</span>
       <h3>${product.name}</h3>
       <p>${product.description}</p>
@@ -222,7 +251,7 @@ document.getElementById("adminProductForm").addEventListener("submit", async e =
     category: document.getElementById("adminProductCategory").value,
     description: document.getElementById("adminProductDescription").value,
     price: Number(document.getElementById("adminProductPrice").value),
-    image: "🍫"
+    image: "assets/images/dark-chocolate.svg"
   };
 
   const res = await fetch(`${API_URL}/admin/products`, {
