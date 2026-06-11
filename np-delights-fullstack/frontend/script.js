@@ -5,8 +5,8 @@ let cart = [];
 let token = localStorage.getItem("np_token") || "";
 
 const productImagesByName = {
-  "dark chocolate": "assets/images/dark-chocolate.svg",
-  "milk chocolate": "assets/images/milk-chocolate.svg",
+  "dark chocolate": "assets/images/dark-chocolate.jpg",
+  "milk chocolate": "assets/images/milk-chocolate.jpg",
   "white chocolate": "assets/images/white-chocolate.svg",
   "hazelnut chocolate": "assets/images/hazelnut-chocolate.svg",
   "caramel chocolate": "assets/images/caramel-chocolate.svg",
@@ -16,8 +16,8 @@ const productImagesByName = {
 };
 
 const fallbackImages = {
-  "dark": "assets/images/dark-chocolate.svg",
-  "milk": "assets/images/milk-chocolate.svg",
+  "dark": "assets/images/dark-chocolate.jpg",
+  "milk": "assets/images/milk-chocolate.jpg",
   "white": "assets/images/white-chocolate.svg",
   "nuts": "assets/images/hazelnut-chocolate.svg",
   "gift": "assets/images/gift-box.svg"
