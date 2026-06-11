@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NP Delights</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="hero">
+    <nav class="navbar">
+      <div class="logo">🍫 NP Delights</div>
+      <div class="nav-links">
+        <a href="#signin">Sign In</a>
+        <a href="#signup">Sign Up</a>
+        <a href="#profile">Profile</a>
+        <a href="#orders">Orders</a>
+        <a href="#admin">Admin</a>
+        <a href="#cart" class="cart-link">Cart <span id="cartCount">0</span></a>
+      </div>
+    </nav>
+
+    <div class="hero-content">
+      <p class="tag">Fresh chocolates, simple ordering</p>
+      <h1>Sweet Chocolates, Simple Ordering</h1>
+      <p>Customer login, admin role, products, cart, and order management.</p>
+
+      <div class="filter-row">
+        <select id="categoryDropdown">
+          <option value="all">All Chocolates</option>
+          <option value="dark">Dark Chocolate</option>
+          <option value="milk">Milk Chocolate</option>
+          <option value="white">White Chocolate</option>
+          <option value="nuts">Nuts & Crunchy</option>
+          <option value="gift">Gift Boxes</option>
+        </select>
+        <input id="searchInput" type="text" placeholder="Search chocolates..." />
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="section-head">
+      <h2>Chocolate Category</h2>
+      <p>Search, filter, select chocolates, and place an order.</p>
+    </section>
+
+    <section id="productGrid" class="product-grid"></section>
+
+    <section id="signup" class="panel">
+      <h2>Sign Up</h2>
+      <form id="signupForm" class="form">
+        <input id="signupName" type="text" placeholder="Full name" required />
+        <input id="signupEmail" type="email" placeholder="Email address" required />
+        <input id="signupPassword" type="password" placeholder="Password" required />
+        <button type="submit">Create Customer Account</button>
+      </form>
+      <p id="signupMessage"></p>
+    </section>
+
+    <section id="signin" class="panel">
+      <h2>Sign In</h2>
+      <form id="signinForm" class="form">
+        <input id="signinEmail" type="email" placeholder="Email address" required />
+        <input id="signinPassword" type="password" placeholder="Password" required />
+        <button type="submit">Sign In</button>
+      </form>
+      <button id="logoutBtn" class="secondary-btn">Logout</button>
+      <p id="signinMessage"></p>
+    </section>
+
+    <section id="profile" class="panel">
+      <h2>User Profile</h2>
+      <div id="profileBox" class="info-box">Please sign in to view your profile.</div>
+    </section>
+
+    <section id="orders" class="panel">
+      <h2>My Orders</h2>
+      <button id="loadOrdersBtn" class="secondary-btn">Load My Orders</button>
+      <div id="ordersBox" class="info-box">No orders loaded yet.</div>
+    </section>
+
+    <section id="admin" class="panel">
+      <h2>Admin Panel</h2>
+      <p>Only admin users can access this section.</p>
+
+      <form id="adminProductForm" class="form">
+        <h3>Add Product</h3>
+        <input id="adminProductName" type="text" placeholder="Product name" required />
+        <input id="adminProductCategory" type="text" placeholder="Category: dark, milk, white, nuts, gift" required />
+        <input id="adminProductDescription" type="text" placeholder="Description" required />
+        <input id="adminProductPrice" type="number" step="0.01" placeholder="Price" required />
+        <button type="submit">Add Product</button>
+      </form>
+
+      <button id="loadAdminOrdersBtn" class="secondary-btn">Load All Orders</button>
+      <div id="adminBox" class="info-box">Admin data not loaded.</div>
+    </section>
+
+    <section id="cart" class="cart-section">
+      <h2>Your Cart</h2>
+      <div id="cartItems"></div>
+      <div class="cart-total"><strong>Total:</strong> $<span id="totalPrice">0.00</span></div>
+
+      <form id="orderForm" class="form">
+        <h3>Delivery Details</h3>
+        <input id="customerName" type="text" placeholder="Your name" required />
+        <input id="customerPhone" type="tel" placeholder="Phone number" required />
+        <textarea id="customerAddress" placeholder="Delivery address" required></textarea>
+        <button type="submit">Place Order</button>
+      </form>
+      <p id="orderMessage"></p>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2026 NP Delights. All rights reserved.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
