@@ -23,9 +23,16 @@ body {
     flex-wrap: wrap
 }
 
+/*
 .logo {
     font-size: 26px;
     font-weight: bold
+}
+*/
+@media (max-width: 768px) {
+    .logo img {
+        height: 50px;
+    }
 }
 
 .nav-links {
