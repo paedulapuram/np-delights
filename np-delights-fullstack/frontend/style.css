@@ -35,6 +35,13 @@ body {
     }
 }
 
+.logo img {
+    height: 80px;
+    width: auto;
+    max-width: 100%;
+    object-fit: contain;
+}
+
 .nav-links {
     display: flex;
     align-items: center;
